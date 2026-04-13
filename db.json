@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Premium Double Door Wardrobe",
+      "category": "Bureau",
+      "price": 14500,
+      "description": "High-quality engineered wood wardrobe with a smooth finish, ample storage space, and durable hinges. Built for longevity.",
+      "image": "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&q=80&w=800",
+      "brand": "Godrej",
+      "material": "Engineered Wood"
+    },
+    {
+      "id": "2",
+      "name": "Classic Dressing Table with Mirror",
+      "category": "Dressing Tables",
+      "price": 6500,
+      "description": "Elegant dressing table featuring a full-length mirror, spacious drawers, and a modern aesthetic finish to compliment your bedroom.",
+      "image": "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&q=80&w=800",
+      "brand": "Local Premium",
+      "material": "Sheesham Wood"
+    },
+    {
+      "id": "3",
+      "name": "Orthopedic Memory Foam Mattress",
+      "category": "Mattresses",
+      "price": 8900,
+      "description": "Comfortable 6-inch orthopedic mattress designed for back support and restful sleep.",
+      "image": "https://images.unsplash.com/photo-1631679700053-54c8646e7f8e?auto=format&fit=crop&q=80&w=800",
+      "brand": "Sleepwell",
+      "size": "72x72 Queen Size"
+    },
+    {
+      "id": "4",
+      "name": "4 Burner Glass Top Gas Stove",
+      "category": "Gas Stoves",
+      "price": 4200,
+      "description": "Sleek and highly efficient gas stove with a toughened glass top and brass burners for optimal safety and durability.",
+      "image": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&q=80&w=800",
+      "brand": "Prestige",
+      "material": "Toughened Glass / Steel"
+    },
+    {
+      "id": "5",
+      "name": "Desert Air Cooler 50L",
+      "category": "Air Coolers",
+      "price": 7800,
+      "description": "Powerful desert air cooler with remote control, honeycomb cooling pads, and large 50L capacity for extended cooling.",
+      "image": "https://images.unsplash.com/photo-1602058300263-8a9d18b62bf6?auto=format&fit=crop&q=80&w=800",
+      "brand": "Symphony",
+      "capacity": "50 Liters"
+    },
+    {
+      "id": "6",
+      "name": "Double Door Refrigerator 250L",
+      "category": "Refrigerators",
+      "price": 24500,
+      "description": "Energy-efficient frost-free refrigerator with smart inverter compressor and stylish floral finish.",
+      "image": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&q=80&w=800",
+      "brand": "LG",
+      "capacity": "250 Liters"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "phone": "9999999999",
+      "role": "admin"
+    }
+  ],
+  "categories": [
+    { "id": "1", "name": "Bureau" },
+    { "id": "2", "name": "Dressing Tables" },
+    { "id": "3", "name": "Mattresses" },
+    { "id": "4", "name": "Gas Stoves" },
+    { "id": "5", "name": "Air Coolers" },
+    { "id": "6", "name": "Refrigerators" },
+    { "id": "7", "name": "Other Home Appliances" }
+  ]
+}
