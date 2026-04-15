@@ -12,7 +12,6 @@ import About from './pages/About';
 import Cart from './pages/Cart';
 import MyOrders from './pages/MyOrders';
 import Checkout from './pages/Checkout';
-import DeliveryInstructions from './pages/DeliveryInstructions';
 import WhatsAppButton from './components/WhatsAppButton';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
@@ -114,7 +113,6 @@ function App() {
                     </UserProtectedRoute>
                   } 
                 />
-                <Route path="/delivery" element={<DeliveryInstructions />} />
                 <Route path="/login" element={<Login />} />
                 <Route 
                   path="/admin" 

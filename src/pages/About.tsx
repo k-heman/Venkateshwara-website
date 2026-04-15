@@ -58,9 +58,9 @@ function About() {
             {/* Owner Portrait Image */}
             <img
               src="/owner.jpg"
-              alt="Ownerportrait"
+              alt="Owner"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/180?text=Owner'; }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
           </div>
           <h3 className="heading-md" style={{ marginBottom: '0.5rem', color: 'var(--color-primary)' }}>K. John</h3>

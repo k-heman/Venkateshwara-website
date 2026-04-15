@@ -9,6 +9,8 @@ export interface Product {
   description: string;
   image: string;
   images?: string[];
+  imagePublicId?: string;
+  imagePublicIds?: string[];
   inStock: boolean;
   specifications?: string;
   brand?: string;

@@ -191,7 +191,9 @@ function Login() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(15, 23, 42, 0.8);
+          background: linear-gradient(140deg, rgba(92, 23, 39, 0.72) 0%, rgba(26, 10, 15, 0.62) 60%, rgba(201, 146, 42, 0.18) 100%), url("/homepage-bg.png");
+          background-size: cover;
+          background-position: center;
           backdrop-filter: blur(8px);
           display: flex;
           align-items: center;

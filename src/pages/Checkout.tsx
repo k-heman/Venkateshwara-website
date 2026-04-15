@@ -314,14 +314,9 @@ const Checkout: React.FC = () => {
 
                 {/* Submit Area */}
                 <div className="submit-area">
-                  <a
-                    href="/delivery"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="delivery-link"
-                  >
-                    <Info size={16} /> View Delivery Instructions
-                  </a>
+                  <div className="delivery-link" style={{ cursor: 'default', color: '#1e293b', background: '#f1f5f9' }}>
+                    <Info size={16} /> Order and pickup (No delivery available)
+                  </div>
 
                   <button
                     type="submit"

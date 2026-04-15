@@ -262,11 +262,14 @@ const MyOrders: React.FC = () => {
       {/* PURE CSS STYLES */}
       <style>{`
         .my-orders-page {
-          background-color: #f8fafc;
+          background: linear-gradient(140deg, rgba(92, 23, 39, 0.72) 0%, rgba(26, 10, 15, 0.62) 60%, rgba(201, 146, 42, 0.18) 100%), url("/homepage-bg.png");
+          background-size: cover;
+          background-attachment: fixed;
+          background-position: center;
           min-height: 100vh;
           padding: 4rem 1.5rem;
           font-family: system-ui, -apple-system, sans-serif;
-          color: #1e293b;
+          color: white;
         }
 
         .container-max {
@@ -291,7 +294,7 @@ const MyOrders: React.FC = () => {
         .page-title {
           font-size: 2.2rem;
           font-weight: 800;
-          color: #1e3a8a;
+          color: white;
           display: flex;
           align-items: center;
           gap: 1rem;
@@ -299,13 +302,14 @@ const MyOrders: React.FC = () => {
         }
         .page-subtitle {
           font-size: 1.1rem;
-          color: #64748b;
+          color: #e2e8f0;
           margin: 0;
         }
 
         /* Empty State */
         .empty-state {
           background: white;
+          color: #1e293b;
           border-radius: 2rem;
           padding: 5rem 2rem;
           text-align: center;
@@ -339,6 +343,7 @@ const MyOrders: React.FC = () => {
 
         .order-card {
           background: white;
+          color: #1e293b;
           border-radius: 1.5rem;
           padding: 2rem;
           box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);

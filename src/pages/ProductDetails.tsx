@@ -211,9 +211,6 @@ function ProductDetails() {
                   &nbsp;
                   <span>Delivery Available</span>
                 </div>
-                <Link to="/delivery" className="flex items-center gap-1.5 text-sm text-primary hover:underline font-extrabold bg-white px-3 py-1.5 rounded-lg shadow-sm">
-                  &nbsp;<Info size={14} /> Instructions
-                </Link>
               </div>
             )}
             {product.promises?.steel && (
