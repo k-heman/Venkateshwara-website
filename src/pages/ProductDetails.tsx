@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   MessageCircle, ArrowLeft, CheckCircle, Shield, Truck,
-  AlertCircle, ShoppingCart, ShieldCheck, Award, Layers, Info
+  AlertCircle, ShoppingCart, ShieldCheck, Award, Layers
 } from 'lucide-react';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';

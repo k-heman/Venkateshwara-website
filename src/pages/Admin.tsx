@@ -6,7 +6,6 @@ import { getProducts, getCategories, addProduct, updateProduct, deleteProduct as
 import type { Product, Category } from '../services/db';
 import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { uploadToCloudinary, deleteImageFromCloudinary } from '../services/cloudinary';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import AdminStatistics from './AdminStatistics';
@@ -59,51 +58,40 @@ export default function Admin() {
 
     setUploading(true);
     const currentImages = formData.images || [];
-    const currentPublicIds = formData.imagePublicIds || [];
 
     try {
       const uploadPromises = Array.from(selectedFiles).map(async (file) => {
-        return await uploadToCloudinary(file);
+        const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
+        await uploadBytes(storageRef, file);
+        return await getDownloadURL(storageRef);
       });
 
-      const newUploads = await Promise.all(uploadPromises);
-      const newUrls = newUploads.map(up => up.secure_url);
-      const newPublicIds = newUploads.map(up => up.public_id);
-
+      const newUrls = await Promise.all(uploadPromises);
       const updatedImages = [...currentImages, ...newUrls];
-      const updatedPublicIds = [...currentPublicIds, ...newPublicIds];
 
       setFormData(prev => ({
         ...prev,
         images: updatedImages,
-        imagePublicIds: updatedPublicIds,
         image: prev.image || updatedImages[0],
-        imagePublicId: prev.imagePublicId || updatedPublicIds[0]
       }));
     } catch (err: any) {
-      console.error("Detailed Upload Error:", err);
-      alert("Failed to upload images. Please check your network or environment configurations.");
+      console.error("Upload Error:", err);
+      alert("Failed to upload images. Please check your Firebase Storage configuration.");
     } finally {
       setUploading(false);
-      if (e.target) e.target.value = ''; // Reset input
+      if (e.target) e.target.value = '';
     }
   };
 
   const removeImage = (indexToRemove: number) => {
     setFormData(prev => {
       const updatedImages = (prev.images || []).filter((_, index) => index !== indexToRemove);
-      const updatedPublicIds = (prev.imagePublicIds || []).filter((_, index) => index !== indexToRemove);
-      
       return {
         ...prev,
         images: updatedImages,
-        imagePublicIds: updatedPublicIds,
         image: prev.image === (prev.images || [])[indexToRemove]
           ? (updatedImages.length > 0 ? updatedImages[0] : '')
           : prev.image,
-        imagePublicId: prev.imagePublicId === (prev.imagePublicIds || [])[indexToRemove]
-          ? (updatedPublicIds.length > 0 ? updatedPublicIds[0] : '')
-          : prev.imagePublicId
       };
     });
   };
@@ -147,29 +135,6 @@ export default function Admin() {
   const deleteProduct = async (product: Product) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        let publicIds = [...(product.imagePublicIds || [])];
-        if (product.imagePublicId && !publicIds.includes(product.imagePublicId)) {
-          publicIds.push(product.imagePublicId);
-        }
-        
-        // Filter out any undefined, null, or empty string IDs from old DB products
-        publicIds = publicIds.filter(id => id && id.trim() !== '');
-        
-        // Try Cloudinary deletion only if there are valid IDs
-        if (publicIds.length > 0) {
-          const deletePromises = publicIds.map(id => deleteImageFromCloudinary(id));
-          const results = await Promise.all(deletePromises);
-          
-          if (results.some(res => res === false)) {
-            console.error("Some Cloudinary images failed to delete");
-            // Still proceed with deleting from db, or block it. User said "ONLY IF SUCCESSFUL".
-            // However, an image might have already been deleted, triggering false. We will proceed to safely delete db doc.
-            // Wait, the prompt says ONLY IF Cloudinary deletion is successful... let's enforce it strictly
-            const confirmOverride = window.confirm("Warning: Failed to delete some images from Cloudinary. Proceed with product deletion anyway?");
-            if (!confirmOverride) return;
-          }
-        }
-
         await dbDeleteProduct(product.id);
         fetchData();
       } catch (err) {
